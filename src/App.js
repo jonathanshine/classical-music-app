@@ -6,6 +6,7 @@ import Home from './Components/Home';
 import Search from './Components/Search';
 import Contact from './Components/Contact';
 import ComposerList from './Components/ComposerList';
+import ComposerProfile from './Components/ComposerProfile';
 
 export const DataContext = createContext();
 
@@ -18,18 +19,19 @@ function App() {
     .then(items => {
         setData(items);
     })
-}, []);
-
-  console.log(data);
+  }, []);
 
   return (
-    <DataContext.Provider value={{ data, setData }}>
+    <DataContext.Provider value={{ data }}>
       <Router>
         <Navbar />
         <Switch>
             <Route path='/' exact component={ Home } />
             <Route path ='/search' component={ Search } />
             <Route path ='/composers' component={ ComposerList } />
+            <Route path='/profile/:id' exact>
+                <ComposerProfile/>
+            </Route>
             <Route path ='/contact' component={ Contact } />
         </Switch>
         </Router>
