@@ -13,7 +13,7 @@ const ComposerWorks = ({ works, composerData }) => {
                 {works.length > 0 ? works.map(work => {
                         if (work.popular === '1' || work.recommended === '1') {
                             return <li key={work.id}>
-                                <Link to={{pathname: `/works/${work.id}`, state: {composerData: composerData}}}>{work.title}</Link>
+                                <Link to={{pathname: `/works/${work.id}`, state: {composerData: composerData, work: work}}}>{work.title}</Link>
                             </li>
                         }
                     }) : null}

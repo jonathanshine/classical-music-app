@@ -36,13 +36,12 @@ const ComposerProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const composer = await (await fetch(`https://api.openopus.org/work/list/composer/${composerData[0].id}/genre/all.json`)).json();
-        if (query !== '') {
+        if (query.length > 0) {
         const tempArr = composer.works.filter(work => {
             return work.title.toLowerCase().includes(query);
         });
-        console.log(tempArr);
         setSearched(tempArr);
-        if (toggleSearched !== true) {
+        if (!toggleSearched) {
             setToggleSearched(!toggleSearched);
         };
         setQuery('');
