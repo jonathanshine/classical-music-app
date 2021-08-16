@@ -7,6 +7,7 @@ import Search from './Components/Search';
 import Contact from './Components/Contact';
 import ComposerList from './Components/ComposerList';
 import ComposerProfile from './Components/ComposerProfile';
+import WorkView from './Components/WorkView';
 
 export const DataContext = createContext();
 
@@ -31,6 +32,9 @@ function App() {
             <Route path ='/composers' component={ ComposerList } />
             <Route path='/profile/:id' exact>
                 <ComposerProfile/>
+            </Route>
+            <Route path='/works/:id' exact>
+                <WorkView/>
             </Route>
             <Route path ='/contact' component={ Contact } />
         </Switch>

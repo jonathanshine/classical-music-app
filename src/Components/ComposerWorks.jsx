@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ComposerWorks = ({ works }) => {
+const ComposerWorks = ({ works, composerData }) => {
 
+    console.log(composerData);
     console.log(works);
 
     return (
@@ -11,7 +13,7 @@ const ComposerWorks = ({ works }) => {
                 {works.length > 0 ? works.map(work => {
                         if (work.popular === '1' || work.recommended === '1') {
                             return <li key={work.id}>
-                                {work.title}
+                                <Link to={{pathname: `/works/${work.id}`, state: {composerData: composerData}}}>{work.title}</Link>
                             </li>
                         }
                     }) : null}

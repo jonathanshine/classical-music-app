@@ -81,8 +81,8 @@ const ComposerProfile = () => {
                     </div>
                 </form>
             
-                {toggleWorks ? <ComposerWorks works={ works } /> : null}
-                {toggleSearched ? <SearchWorks works={ searched } /> : null}
+                {toggleWorks ? <ComposerWorks works={ works } composerData={ composerData }/> : null}
+                {toggleSearched ? <SearchWorks works={ searched } composerData={ composerData }/> : null}
 
             </div>)}
         </>
