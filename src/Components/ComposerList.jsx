@@ -29,14 +29,15 @@ const ComposerList = () => {
             <div>
                 <h1>Composer List</h1>
                 
-                        <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                    <label htmlFor="composerName">Search by Composer Name:</label>
-                    <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={query} />
-                </div>
-                <input type="submit" value="Search" />
-                <input onClick={() => {setReset(!reset); setSearchList(data)}} type="reset" value="Reset" />
-                        </form>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                    <div>
+                        <label htmlFor="composerName">Search by Composer Name:</label>
+                        <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={query} />
+                    </div>
+                    <input type="submit" value="Search" />
+                    <input onClick={() => {setReset(!reset); setSearchList(data)}} type="reset" value="Reset" />
+                </form>
+                
                 <ul>
                     {reset ? data.composers.map((composer, index) => {
                         return <li key={index}><Link to={`/profile/${composer.complete_name}`}>{composer.complete_name}</Link></li>
