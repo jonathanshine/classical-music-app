@@ -8,9 +8,12 @@ const ComposerProfile = () => {
     const [works, setWorks] = useState([]);
     const [toggleWorks, setToggleWorks] = useState(false);
 
-    useEffect(async () => {
+    useEffect(() => {
+        async function fetchData() {
         const composerInfo = await (await fetch(`https://api.openopus.org/composer/list/search/${params.id}.json`)).json();
         setComposerData(composerInfo.composers);
+        }
+        fetchData();
     }, [])
 
     const handleClick = async () => {
@@ -29,7 +32,7 @@ const ComposerProfile = () => {
                 <Link to='/composers'><button>Back</button></Link>
                 <p>{composerData[0].birth.substring(0, 4)} - {composerData[0].death === null ? '' : composerData[0].death.substring(0, 4)}</p>
                 <p>Time Period: {composerData[0].epoch}</p>
-                <button onClick={() => handleClick()}>{toggleWorks ? 'Hide Works' : 'Show Works'}</button>
+                <button onClick={() => handleClick()}>{toggleWorks ? 'Hide Popular Works' : 'Show Popular Works'}</button>
                 {toggleWorks ? <ComposerWorks works={ works } /> : null}
             </div>)}
         </>
