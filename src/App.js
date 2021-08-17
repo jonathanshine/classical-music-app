@@ -13,6 +13,7 @@ export const DataContext = createContext();
 
 function App() {
   const [data, setData] = useState({composers: []});
+  const [spotifyID, setSpotifyID] = useState('64XAQNts7RaywHdO3FYabw');
 
   useEffect(() => {
     return fetch('https://api.openopus.org/work/dump.json')
@@ -23,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <DataContext.Provider value={{ data }}>
+    <DataContext.Provider value={{ data, spotifyID, setSpotifyID }}>
       <Router>
         <Navbar />
         <Switch>
