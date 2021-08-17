@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const SearchWorks = ({ works }) => {
+const SearchWorks = ({ works, composerData }) => {
 
     return (
         <div>
@@ -9,7 +10,7 @@ const SearchWorks = ({ works }) => {
             <ul>
                 {works.length > 0 ? works.map(work => {
                     return <li key={work.id}>
-                        {work.title}
+                        <Link to={{pathname: `/works/${work.id}`, state: {composerData: composerData, work: work}}}>{work.title}</Link>
                     </li>
                     }) : null}
             </ul>
