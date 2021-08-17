@@ -6,9 +6,10 @@ const Navbar = () => {
     const { spotifyID } = useContext(DataContext);
 
     return (
-        <>
+        <header>
             <nav>
-                <p>Classical Music App</p>
+                <p>aChord</p>
+                
                 <ul>
                     <li>
                         <Link to='/'>Home</Link>
@@ -20,7 +21,7 @@ const Navbar = () => {
             </nav>
             
             <iframe src={`https://open.spotify.com/embed/track/${spotifyID}`} width="300" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media" title="Spotify Player"></iframe>
-        </>
+        </header>
     )
 }
 
