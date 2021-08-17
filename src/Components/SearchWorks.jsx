@@ -2,8 +2,6 @@ import React from 'react'
 
 const SearchWorks = ({ works }) => {
 
-    console.log(works);
-
     return (
         <div>
             <h3>Search Result</h3>

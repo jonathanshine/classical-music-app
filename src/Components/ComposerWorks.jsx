@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 
 const ComposerWorks = ({ works, composerData }) => {
 
-    console.log(composerData);
-    console.log(works);
-
     return (
         <div>
             <h3>Popular Works</h3>

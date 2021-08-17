@@ -4,7 +4,6 @@ import { DataContext } from '../App';
 
 const Navbar = () => {
     const { spotifyID } = useContext(DataContext);
-    console.log(spotifyID);
 
     return (
         <>

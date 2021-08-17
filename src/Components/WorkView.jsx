@@ -6,7 +6,8 @@ const WorkView = () => {
     const { spotifyID, setSpotifyID } = useContext(DataContext);
     const location = useLocation();
     const { composerData, work } = location.state;
-    // const accessToken = process.env.ACCESS_TOKEN;
+
+    const spotifyToken = process.env.REACT_APP_SPOTIFY_API_TOKEN;
 
     const handleClick = async () => {
         
@@ -18,15 +19,13 @@ const WorkView = () => {
               headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer BQAt0s2u63kJ8Q0SP3LU6FGD4Mb7yco9fwwqcyrYz0GwYrTED4nLTMU6nLFSaBDKKCGIVDjnAY1AfDxbMNsN7TqnSJOJyLfKPlfWABxi5CBQqgH6yaZ4Vxd2wYp84bALIMibIps-BBpy3Io',
+                Authorization: 'Bearer ' + spotifyToken,
               },
             })
           ).json();
           
           setSpotifyID(spotifyData.tracks.items[0].id)
     }
-
-    console.log(spotifyID);
 
     return (
         <div>
