@@ -1,11 +1,14 @@
 header {
     border-bottom: solid 1px blue;
     position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+    color: white;
 
     nav {
         display: flex;
@@ -17,6 +20,9 @@ header {
 
         p {
             margin-left: 1rem;
+            font-family: 'Arvo', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
         }
 
         ul {
@@ -30,7 +36,7 @@ header {
 
                 a {
                     text-decoration: none;
-                    color: black;
+                    color: white;
                 }
             }
         }
