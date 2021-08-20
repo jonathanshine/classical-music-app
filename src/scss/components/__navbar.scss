@@ -1,15 +1,14 @@
 header {
-    border-bottom: solid 1px black;
+    
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
+    @include flex-center;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     color: white;
     background-color: dodgerblue;
+    box-shadow: rgba(0, 0, 0, 0.2) 2px 4px 8px 0px;
 
     nav {
         display: flex;
@@ -58,5 +57,6 @@ header {
 
     iframe {
         margin: 1rem 0;
+        border-radius: 5px;
     }
 }

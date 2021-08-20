@@ -1,0 +1,10 @@
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin blue-rounded-border {
+    border: solid 1px dodgerblue;
+    border-radius: 5px;
+}

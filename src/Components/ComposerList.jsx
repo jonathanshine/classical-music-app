@@ -25,27 +25,29 @@ const ComposerList = () => {
     };
 
     return (
-        <div>
-            <div>
-                <h1>Composer List</h1>
-                
-                <form onSubmit={(e) => handleSubmit(e)}>
-                    <div>
-                        <label htmlFor="composerName">Search by Composer Name: </label>
-                        <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={query} />
-                    </div>
+        <div className='composerListContainer'>
+            <h1>Composer List</h1>
+            
+            <p>This page contains a list of all composers available through OpenOpus. Click on a name to be taken to that composer's profile. Browse through the list, or use the search function to find the composer you are looking for</p>
+            
+            <form onSubmit={(e) => handleSubmit(e)}>
+                <div>
+                    <label htmlFor="composerName"><strong>Search by Composer Name: </strong></label>
+                    <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={query} />
+                </div>
+                <div className="buttons">
                     <input type="submit" value="Search" />
                     <input onClick={() => {setReset(!reset); setSearchList(data)}} type="reset" value="Reset" />
-                </form>
+                </div>
+            </form>
                 
-                <ul>
-                    {reset ? data.composers.map((composer, index) => {
-                        return <li key={index}><Link to={`/profile/${composer.complete_name}`}>{composer.complete_name}</Link></li>
-                    }) : searchList.composers.map((composer, index) => {
-                        return <li key={index}><Link to={`/profile/${composer.complete_name}`}>{composer.complete_name}</Link></li>
-                    })}
-                </ul>
-            </div>
+            <ul>
+                {reset ? data.composers.map((composer, index) => {
+                    return <li key={index}><Link to={`/profile/${composer.complete_name}`}>{composer.complete_name}</Link></li>
+                }) : searchList.composers.map((composer, index) => {
+                    return <li key={index}><Link to={`/profile/${composer.complete_name}`}>{composer.complete_name}</Link></li>
+                })}
+            </ul>
         </div>
     )
 }
