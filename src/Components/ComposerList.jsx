@@ -31,7 +31,7 @@ const ComposerList = () => {
                 
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div>
-                        <label htmlFor="composerName">Search by Composer Name:</label>
+                        <label htmlFor="composerName">Search by Composer Name: </label>
                         <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={query} />
                     </div>
                     <input type="submit" value="Search" />

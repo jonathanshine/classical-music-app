@@ -3,11 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { DataContext } from '../App';
 
 const WorkView = () => {
-    const { spotifyID, setSpotifyID } = useContext(DataContext);
+    const { setSpotifyID } = useContext(DataContext);
     const location = useLocation();
     const { composerData, work } = location.state;
 
     const spotifyToken = process.env.REACT_APP_SPOTIFY_API_TOKEN;
+    // const clientID = process.env.REACT_APP_CLIENT_ID;
+    // const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
 
     const handleClick = async () => {
         

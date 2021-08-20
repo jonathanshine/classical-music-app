@@ -35,6 +35,7 @@ function App() {
             </Route>
         </Switch>
         </Router>
+        <footer>© 2021 - Jonathan Shine</footer>
     </DataContext.Provider>
   );
 }

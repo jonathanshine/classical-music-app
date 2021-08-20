@@ -1,5 +1,5 @@
 header {
-    border-bottom: solid 1px blue;
+    border-bottom: solid 1px black;
     position: fixed;
     top: 0;
     left: 0;
@@ -9,6 +9,7 @@ header {
     align-items: center;
     width: 100%;
     color: white;
+    background-color: dodgerblue;
 
     nav {
         display: flex;
@@ -33,10 +34,23 @@ header {
 
             li {
             list-style: none;
-
+            padding: 10px;
+            
                 a {
                     text-decoration: none;
                     color: white;
+                    background-color: black;
+                    padding: 10px;
+                    border: solid 1px white;
+                    border-radius: 5px;
+                    opacity: 0.5;
+                }
+                a.active {
+                    font-weight: bold;
+                    color: black;
+                    background-color: #fff;
+                    border: solid 1px black;
+                    opacity: 1;
                 }
             }
         }

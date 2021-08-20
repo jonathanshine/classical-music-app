@@ -20,7 +20,7 @@ const ComposerProfile = () => {
         setComposerData(composerInfo.composers);
         }
         fetchData();
-    }, [])
+    }, [params.id])
 
     const handleClick = async () => {
         const composer = await (await fetch(`https://api.openopus.org/work/list/composer/${composerData[0].id}/genre/all.json`)).json();

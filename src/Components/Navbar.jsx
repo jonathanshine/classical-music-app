@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { DataContext } from '../App';
 
 const Navbar = () => {
@@ -12,10 +12,10 @@ const Navbar = () => {
                 
                 <ul>
                     <li>
-                        <Link to='/'>Home</Link>
+                        <NavLink exact to='/' activeClassName='active'>Home</NavLink>
                     </li>
                     <li>
-                        <Link to='/composers'>Composers</Link>
+                        <NavLink to='/composers' activeClassName='active'>Composers</NavLink>
                     </li>
                 </ul>
             </nav>

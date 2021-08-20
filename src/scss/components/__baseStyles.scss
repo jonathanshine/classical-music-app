@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    padding: 12rem 1rem;
+    padding: 12rem 1.75rem 1rem;
     font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -16,4 +16,9 @@ h4,
 h5,
 h6 {
     font-family: 'Arvo', serif;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
 }
