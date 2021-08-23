@@ -22,11 +22,8 @@
         padding: 0.5rem;
 
         input {
-            background-color: white;
-            @include blue-rounded-border;
-            padding: 0.25rem 0.5rem;
+            @include buttons;
             margin: 0 0.5rem;
-            box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 4px 0px;
         }
     }
 }

@@ -8,3 +8,10 @@
     border: solid 1px dodgerblue;
     border-radius: 5px;
 }
+
+@mixin buttons {
+    @include blue-rounded-border;
+    background-color: white;               
+    padding: 0.25rem 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 4px 0px;
+}

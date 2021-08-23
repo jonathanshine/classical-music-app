@@ -30,9 +30,10 @@ const WorkView = () => {
     }
 
     return (
-        <div>
+        <div className='workViewContainer'>
             <h3>Work View</h3>
-            <p onClick={() => handleClick()}>{work.title}</p>
+            <p><strong>{work.title}</strong></p>
+            <button  onClick={() => handleClick()}>Play Track</button>
             <p>Genre: {work.genre}</p>
             <p>To search IMSLP for the score, click <a href={`https://www.google.com/search?q=site:imslp.org+${composerData[0].name}+${work.title}`} target='_blank' rel='noreferrer'>here</a></p>
             <Link to={`/profile/${composerData[0].complete_name}`}><button>Back</button></Link>

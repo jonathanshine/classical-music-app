@@ -28,7 +28,7 @@ const ComposerList = () => {
         <div className='composerListContainer'>
             <h1>Composer List</h1>
             
-            <p>This page contains a list of all composers available through OpenOpus. Click on a name to be taken to that composer's profile. Browse through the list, or use the search function to find the composer you are looking for</p>
+            <p>This page contains a list of all composers available through OpenOpus. Click on a name to be taken to that composer's profile. Browse through the list, or use the search function to find the composer you are looking for.</p>
             
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
