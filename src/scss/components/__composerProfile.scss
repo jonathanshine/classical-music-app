@@ -1,0 +1,37 @@
+.composerProfileContainer {
+    text-align: center;
+
+    img {
+        border-radius: 5px;
+    }
+
+    button {
+        @include buttons
+    }
+
+    form {
+        height: 150px;
+        margin-top: 20px;
+        @include blue-rounded-border;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .workSearch {
+        height: 100px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .searchButtons {
+        display: flex;
+        justify-content: space-evenly;
+
+        input {
+            @include buttons;
+        }
+    }
+}

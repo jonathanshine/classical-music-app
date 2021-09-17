@@ -50,7 +50,7 @@ const ComposerProfile = () => {
     };
 
     return (
-        <>
+        <div className="composerProfileContainer">
             {composerData[0] && (<div>
                 <h2>{composerData[0].complete_name}</h2>
                 
@@ -66,17 +66,19 @@ const ComposerProfile = () => {
                 <button onClick={() => handleClick()}>{toggleWorks ? 'Hide Popular Works' : 'Show Popular Works'}</button>
             
                 <form onSubmit={(e) => handleSubmit(e)}>
-                    <div>
+                    <div className="workSearch">
                         <label htmlFor="searchWorks">Search Works: </label>
                         <input onChange={(e) => handleChange(e)} type="text" name="searchWorks" id="searchWorks" value={query}/>
-                        <input type="submit" value="Search" />
-                        <input onClick={() => {
-                            setReset(!reset);
-                            setSearched([]);
-                            if (toggleSearched) {
-                                setToggleSearched(!toggleSearched);
-                            }
-                        }} type="reset" value="Clear" />
+                        <div className="searchButtons">
+                            <input type="submit" value="Search" />
+                            <input onClick={() => {
+                                setReset(!reset);
+                                setSearched([]);
+                                if (toggleSearched) {
+                                    setToggleSearched(!toggleSearched);
+                                }
+                            }} type="reset" value="Clear" />
+                        </div>
                     </div>
                 </form>
             
@@ -84,7 +86,7 @@ const ComposerProfile = () => {
                 {toggleSearched ? <SearchWorks works={ searched } composerData={ composerData }/> : null}
 
             </div>)}
-        </>
+        </div>
     )
 }
 

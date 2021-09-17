@@ -43,9 +43,9 @@ const ComposerList = () => {
                 
             <ul>
                 {reset ? data.composers.map((composer, index) => {
-                    return <li key={index}><Link to={`/profile/${composer.complete_name}`}>{composer.complete_name}</Link></li>
+                    return <li key={index}><Link to={`/profile/${composer.complete_name.replace(/-/g, " ")}`}>{composer.complete_name}</Link></li>
                 }) : searchList.composers.map((composer, index) => {
-                    return <li key={index}><Link to={`/profile/${composer.complete_name}`}>{composer.complete_name}</Link></li>
+                    return <li key={index}><Link to={`/profile/${composer.complete_name.replace(/-/g, " ")}`}>{composer.complete_name}</Link></li>
                 })}
             </ul>
         </div>
