@@ -5,7 +5,7 @@ import SearchWorks from './SearchWorks';
 
 const ComposerProfile = () => {
     let params  = useParams();
-    const [composerData, setComposerData] = useState({composer: []})
+    const [composerData, setComposerData] = useState([])
     const [works, setWorks] = useState([]);
     const [toggleWorks, setToggleWorks] = useState(false);
 
@@ -16,11 +16,12 @@ const ComposerProfile = () => {
 
     useEffect(() => {
         async function fetchData() {
-        const composerInfo = await (await fetch(`https://api.openopus.org/composer/list/search/${params.id}.json`)).json();
+        const composerInfo = await (await fetch(`https://api.openopus.org/composer/list/search/${params.id}.json`)).json();    
         setComposerData(composerInfo.composers);
         }
         fetchData();
-    }, [params.id])
+    }, [params.id]);
+
 
     const handleClick = async () => {
         const composer = await (await fetch(`https://api.openopus.org/work/list/composer/${composerData[0].id}/genre/all.json`)).json();
@@ -60,7 +61,7 @@ const ComposerProfile = () => {
                 
                 <Link to='/composers'><button>Back</button></Link>
                 
-                <p>{composerData[0].birth.substring(0, 4)} - {composerData[0].death === null ? '' : composerData[0].death.substring(0, 4)}</p>
+                <p>{composerData[0].birth.substring(0, 4)} - {composerData[0].death === null ? 'present' : composerData[0].death.substring(0, 4)}</p>
                 <p>Time Period: {composerData[0].epoch}</p>
                 
                 <button onClick={() => handleClick()}>{toggleWorks ? 'Hide Popular Works' : 'Show Popular Works'}</button>

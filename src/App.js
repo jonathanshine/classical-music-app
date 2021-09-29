@@ -9,16 +9,17 @@ import WorkView from './Components/WorkView';
 export const DataContext = createContext();
 
 function App() {
-  const [data, setData] = useState({composers: []});
+  const [data, setData] = useState([]);
   const [spotifyID, setSpotifyID] = useState('64XAQNts7RaywHdO3FYabw');
 
   useEffect(() => {
     return fetch('https://api.openopus.org/work/dump.json')
     .then(data => data.json())
-    .then(items => {
-        setData(items);
+    .then(items => {  
+      setData(items.composers);
     })
   }, []);
+  
 
   return (
     <DataContext.Provider value={{ data, spotifyID, setSpotifyID }}>

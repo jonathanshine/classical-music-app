@@ -6,7 +6,7 @@ import { DataContext } from '../App';
 const ComposerList = () => {
     const { data } = useContext(DataContext);
     const [query, setQuery] = useState('');
-    const [searchList, setSearchList] = useState({composers: []});
+    const [searchList, setSearchList] = useState([]);
     const [reset, setReset] = useState(true);
 
     const handleChange = (e) => {
@@ -16,10 +16,10 @@ const ComposerList = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const tempArr = data.composers.filter(composer => {
+        const tempArr = data.filter(composer => {
             return composer.complete_name.toLowerCase().includes(query);
         });
-        setSearchList({composers: tempArr});
+        setSearchList(tempArr);
         setQuery('');
         setReset(false);
     };
@@ -42,9 +42,9 @@ const ComposerList = () => {
             </form>
                 
             <ul>
-                {reset ? data.composers.map((composer, index) => {
+                {reset ? data.map((composer, index) => {
                     return <li key={index}><Link to={`/profile/${composer.complete_name.replace(/-/g, " ")}`}>{composer.complete_name}</Link></li>
-                }) : searchList.composers.map((composer, index) => {
+                }) : searchList.map((composer, index) => {
                     return <li key={index}><Link to={`/profile/${composer.complete_name.replace(/-/g, " ")}`}>{composer.complete_name}</Link></li>
                 })}
             </ul>
