@@ -5,6 +5,8 @@ import Home from './Components/Home';
 import ComposerList from './Components/ComposerList';
 import ComposerProfile from './Components/ComposerProfile';
 import WorkView from './Components/WorkView';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
 
 export const DataContext = createContext();
 
@@ -26,6 +28,8 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
+            <Route path="/login" component={ Login } />
+            <Route path="/signup" component={ Signup } />
             <Route path='/' exact component={ Home } />
             <Route path ='/composers' component={ ComposerList } />
             <Route path='/profile/:id' exact>
