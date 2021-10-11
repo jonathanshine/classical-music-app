@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './Components/Navbar';
-import Home from './Components/Home';
+import About from './Components/About';
 import ComposerList from './Components/ComposerList';
 import ComposerProfile from './Components/ComposerProfile';
 import WorkView from './Components/WorkView';
@@ -28,10 +28,10 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
+            <Route path='/' exact component={ ComposerList } />
+            <Route path ='/about' component={ About } />
             <Route path="/login" component={ Login } />
             <Route path="/signup" component={ Signup } />
-            <Route path='/' exact component={ Home } />
-            <Route path ='/composers' component={ ComposerList } />
             <Route path='/profile/:id' exact>
                 <ComposerProfile/>
             </Route>

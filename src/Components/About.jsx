@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Home = () => {
+const About = () => {
     return (
-        <div className='homeContainer'>
-            <h1>Welcome to aChord!</h1>
+        <div className='aboutContainer'>
+            <h2>About aChord</h2>
             
             <p><strong>Project Idea:</strong> As a classical musician, I always found it frustrating needing multiple applications and browser windows open when studying music, not to mention having to search many different sources for scores and recordings. So I decided to design a tool where the user has access to a list of classical composers and their works through the OpenOpus API, an embedded Spotify player, and the ability to search for the score on IMSLP.</p>
             
@@ -28,4 +28,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default About
