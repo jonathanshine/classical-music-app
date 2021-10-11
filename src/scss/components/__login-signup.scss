@@ -1,0 +1,22 @@
+.login-container, .signup-container{
+  width: fit-content;
+  margin: auto;
+  form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    label{
+      margin: 10px 0;
+      display:  grid;
+      grid-template-columns: 100px 1fr;
+      align-items: center;
+      input{
+        padding: 10px;
+      }
+    }
+    button{
+      @include buttons;
+      width: fit-content;
+    }
+  }
+}
