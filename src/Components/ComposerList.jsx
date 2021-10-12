@@ -31,17 +31,6 @@ const ComposerList = () => {
             <p>a study tool for musicians connecting metadata from the OpenOpus API and Spotify playback and linking to scores from the Petrucci Music Library</p>
 
             <p>This page contains a list of all composers available through OpenOpus. Click on a name to be taken to that composer's profile. Browse through the list, or use the search function to find the composer you are looking for.</p>
-            
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                    <label htmlFor="composerName"><strong>Search by Composer Name: </strong></label>
-                    <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={query} />
-                </div>
-                <div className="buttons">
-                    <input type="submit" value="Search" />
-                    <input onClick={() => {setReset(!reset); setSearchList(data)}} type="reset" value="Reset" />
-                </div>
-            </form>
                 
             <ul>
                 {reset ? data.map((composer, index) => {
