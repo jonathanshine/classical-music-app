@@ -34,7 +34,7 @@ function App() {
             <Route path ='/about' component={ About } />
             <Route path="/login" component={ Login } />
             <Route path="/signup" component={ Signup } />
-            <Route path='/profile/:id' exact>
+            <Route path='/composers/:composerName' exact>
                 <ComposerProfile/>
             </Route>
             <Route path='/works/:id' exact>

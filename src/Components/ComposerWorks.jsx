@@ -1,22 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const ComposerWorks = ({ works, composerData }) => {
+const ComposerWorks = ({ composer, composerWorks }) => {
 
-    return (
-        <div>
-            <h3>Popular Works</h3>
-            <ul>
-                {works.length > 0 ? works.map(work => {
-                        if (work.popular === '1' || work.recommended === '1') {
-                            return <li key={work.id}>
-                                <Link to={{pathname: `/works/${work.id}`, state: {composerData: composerData, work: work}}}>{work.title}</Link>
-                            </li>
-                        }
-                    }) : null}
-            </ul>
-        </div>
+  const workList = composerWorks.map(work=>{
+    console.log(work);
+    return(
+      <li>{work}</li>
     )
-}
+  });
 
-export default ComposerWorks
+  return (
+    <div>
+      <h3>Works</h3>
+      <ul>
+        {workList}
+      </ul>
+    </div>
+  );
+};
+
+export default ComposerWorks;
