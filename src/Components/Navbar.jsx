@@ -23,9 +23,6 @@ const Navbar = () => {
                     <li>
                         <NavLink exact to='/login' activeClassName='active'>Login</NavLink>
                     </li>
-                    <li>
-                        <NavLink to='/composers' activeClassName='active'>Composers</NavLink>
-                    </li>
                 </ul>
             </nav>
             
