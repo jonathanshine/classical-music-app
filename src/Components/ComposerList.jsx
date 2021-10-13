@@ -8,7 +8,7 @@ const ComposerList = () => {
   const { data } = useContext(DataContext);
 
   const composerGallery = data.map((item, index)=>{
-    console.log(item);
+    
     return(
       <div key={index} className="composerListItem">
         <div className="imageContainer"><img src={item.portrait} alt={`${item.complete_name} portrait`}/></div>
