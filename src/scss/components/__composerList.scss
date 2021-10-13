@@ -1,29 +1,52 @@
 .composerListContainer {
-
-    h1 {
-        text-align: center;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 300px;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  .composerListItem{
+    cursor:pointer;
+    position: relative;
+    border: 1px solid black;
+    @include flex-center;
+    overflow:hidden;
+    .imageContainer{
+      @include flex-center;
+      height: 100%;
+      width: 100%;
+      z-index:-10;
+      img{
+        height: 100%;
+      }
     }
-
-    form {
-        text-align: center;
-        padding: 1rem;
-        width: 75%;
-        margin: auto;
-        @include blue-rounded-border;
+    h2{
+      text-align:center;
+      position:absolute;
+      bottom: 10px;
+      right: 10px;
     }
-
-    #composerName {
-        display: block;
-        margin: 1rem auto;
-        width: 50%;
+    &::before{
+      position:absolute;
+      top:0;
+      left:0;
+      content:"";
+      width:100%;
+      height:100%;
+      background-color: rgba(255, 255, 255,.4);
+      transition: .2s background-color;
     }
-
-    .buttons {
-        padding: 0.5rem;
-
-        input {
-            @include buttons;
-            margin: 0 0.5rem;
-        }
+    &:hover{
+      color:white;
+      &::before{
+        position:absolute;
+        top:0;
+        left:0;
+        content:"";
+        width:100%;
+        height:100%;
+        background-color: rgba(255, 255, 255,.1);
+      }
     }
+  }
 }

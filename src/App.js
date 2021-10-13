@@ -7,6 +7,8 @@ import ComposerProfile from './Components/ComposerProfile';
 import WorkView from './Components/WorkView';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+import SpotifyPlayer from './Components/SpotifyPlayer';
+
 
 export const DataContext = createContext();
 
@@ -15,10 +17,10 @@ function App() {
   const [spotifyID, setSpotifyID] = useState('64XAQNts7RaywHdO3FYabw');
 
   useEffect(() => {
-    return fetch('https://api.openopus.org/work/dump.json')
+    return fetch('http://localhost:5000/composers')
     .then(data => data.json())
     .then(items => {  
-      setData(items.composers);
+      setData(items);
     })
   }, []);
   
@@ -40,7 +42,8 @@ function App() {
             </Route>
         </Switch>
         </Router>
-        <footer>© 2021 - Jonathan Shine</footer>
+        <SpotifyPlayer/>
+        {/* <footer>© 2021 - Jonathan Shine</footer> */}
     </DataContext.Provider>
   );
 }

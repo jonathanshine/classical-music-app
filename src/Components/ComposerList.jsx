@@ -1,57 +1,30 @@
-import React from 'react';
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { DataContext } from '../App';
+import React from "react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { DataContext } from "../App";
+import WelcomeBanner from "./WelcomeBanner";
 
 const ComposerList = () => {
-    const { data } = useContext(DataContext);
-    const [query, setQuery] = useState('');
-    const [searchList, setSearchList] = useState([]);
-    const [reset, setReset] = useState(true);
+  const { data } = useContext(DataContext);
 
-    const handleChange = (e) => {
-        const query = e.target.value;
-        setQuery(query);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const tempArr = data.filter(composer => {
-            return composer.complete_name.toLowerCase().includes(query);
-        });
-        setSearchList(tempArr);
-        setQuery('');
-        setReset(false);
-    };
-
-    return (
-        <div className='composerListContainer'>
-            <h1>Welcome to aChord!</h1>
-            
-            <p>a study tool for musicians connecting metadata from the OpenOpus API and Spotify playback and linking to scores from the Petrucci Music Library</p>
-
-            <p>This page contains a list of all composers available through OpenOpus. Click on a name to be taken to that composer's profile. Browse through the list, or use the search function to find the composer you are looking for.</p>
-            
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                    <label htmlFor="composerName"><strong>Search by Composer Name: </strong></label>
-                    <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={query} />
-                </div>
-                <div className="buttons">
-                    <input type="submit" value="Search" />
-                    <input onClick={() => {setReset(!reset); setSearchList(data)}} type="reset" value="Reset" />
-                </div>
-            </form>
-                
-            <ul>
-                {reset ? data.map((composer, index) => {
-                    return <li key={index}><Link to={`/profile/${composer.complete_name.replace(/-/g, " ")}`}>{composer.complete_name}</Link></li>
-                }) : searchList.map((composer, index) => {
-                    return <li key={index}><Link to={`/profile/${composer.complete_name.replace(/-/g, " ")}`}>{composer.complete_name}</Link></li>
-                })}
-            </ul>
-        </div>
+  const composerGallery = data.map((item, index)=>{
+    console.log(item);
+    return(
+      <div key={index} className="composerListItem">
+        <div className="imageContainer"><img src={item.portrait} alt={`${item.complete_name} portrait`}/></div>
+        <h2>{item.complete_name}</h2>
+      </div>
     )
-}
+  });
 
-export default ComposerList
+  return (
+    <>
+      <WelcomeBanner/>
+      <div className="composerListContainer">
+        {composerGallery}
+      </div>
+    </>
+  );
+};
+
+export default ComposerList;

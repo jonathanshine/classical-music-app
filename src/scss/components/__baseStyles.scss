@@ -1,12 +1,16 @@
 // Google Font Imports
-@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@300;400;500;600;700&family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Arvo:wght@300;400;500;600;700&family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    padding: 12rem 1.75rem 1rem;
-    font-family: 'Nunito Sans', sans-serif;
+  padding: 90px 20px 100px;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 h1,
@@ -15,10 +19,14 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Arvo', serif;
+  font-family: "Arvo", serif;
 }
 
 footer {
-    text-align: center;
-    padding: 1rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+ul{
+  list-style-type: none;
 }
