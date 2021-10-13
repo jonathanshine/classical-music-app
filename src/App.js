@@ -15,6 +15,7 @@ export const DataContext = createContext();
 function App() {
   const [data, setData] = useState([]);
   const [spotifyID, setSpotifyID] = useState('64XAQNts7RaywHdO3FYabw');
+  const [user, setUser] = useState();
 
   useEffect(() => {
     return fetch('http://localhost:5000/composers')
@@ -26,7 +27,7 @@ function App() {
   
 
   return (
-    <DataContext.Provider value={{ data, spotifyID, setSpotifyID }}>
+    <DataContext.Provider value={{ data, user, setUser, spotifyID, setSpotifyID }}>
       <Router>
         <Navbar />
         <Switch>
