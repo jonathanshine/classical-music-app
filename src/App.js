@@ -17,10 +17,10 @@ function App() {
   const [spotifyID, setSpotifyID] = useState('64XAQNts7RaywHdO3FYabw');
 
   useEffect(() => {
-    return fetch('https://api.openopus.org/work/dump.json')
+    return fetch('http://localhost:5000/composers')
     .then(data => data.json())
     .then(items => {  
-      setData(items.composers);
+      setData(items);
     })
   }, []);
   
@@ -43,7 +43,7 @@ function App() {
         </Switch>
         </Router>
         <SpotifyPlayer/>
-        <footer>© 2021 - Jonathan Shine</footer>
+        {/* <footer>© 2021 - Jonathan Shine</footer> */}
     </DataContext.Provider>
   );
 }
