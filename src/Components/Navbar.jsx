@@ -65,9 +65,6 @@ const Navbar = () => {
         <NavLink exact to="/login" activeClassName="active">
           Login
         </NavLink>
-        <NavLink to="/composers" activeClassName="active">
-          Composers
-        </NavLink>
       </div>
     </div>
   );
