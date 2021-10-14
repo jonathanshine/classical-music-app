@@ -20,7 +20,7 @@ const ComposerProfile = () => {
       setWorkSelection(composerInfo.works);
     }
     fetchData();
-  });
+  }, []);
 
   const submitHandler = (e) => {
     e.preventDefault();
