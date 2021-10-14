@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { DataContext } from "../App";
 
 const Navbar = () => {
@@ -23,37 +23,29 @@ const Navbar = () => {
     setReset(false);
   };
 
+  const resetHandler = () => {
+    setReset(!reset);
+    setSearchList(data);
+  }
+
   return (
     <div className="navbar">
-      <h1>aChord</h1>
+      <Link to="/">
+        <h1>aChord</h1>
+      </Link>
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
-          <input
-            onChange={(e) => handleChange(e)}
-            type="text"
-            name="composerName"
-            id="composerName"
-            value={query}
-            placeholder="search for composer"
-          />
+          <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={query} placeholder="search for composer" />
         </div>
         <div className="buttons">
           <button type="submit">Search</button>
-          <button
-            onClick={() => {
-              setReset(!reset);
-              setSearchList(data);
-            }}
-            type="reset"
-          >
-            Reset
-          </button>
+          <button onClick={resetHandler} type="reset">Reset</button>
         </div>
       </form>
 
       <div className="nav-menu">
-        <NavLink exact to="/" activeClassName="active">
+        <NavLink exact to="/composers" activeClassName="active">
           Home
         </NavLink>
         <NavLink to="/about" activeClassName="active">

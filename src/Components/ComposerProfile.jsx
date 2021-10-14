@@ -1,71 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ComposerWorks from "./ComposerWorks";
-import SearchWorks from "./SearchWorks";
 
 const ComposerProfile = () => {
   const location = useLocation();
   const {composer} = location.state;
 
   const [composerWorks, setComposerWorks] = useState([]);
-  const [works, setWorks] = useState([]);
-  const [toggleWorks, setToggleWorks] = useState(false);
+  const [workSelection, setWorkSelection] = useState([]);
 
-  const [searched, setSearched] = useState([]);
-  const [toggleSearched, setToggleSearched] = useState(false);
   const [query, setQuery] = useState("");
-  const [reset, setReset] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       const composerInfo = await (await fetch(`http://localhost:5000/composers/${composer._id}`)
       ).json();
       setComposerWorks(composerInfo.works);
+      setWorkSelection(composerInfo.works);
     }
     fetchData();
   }, []);
 
-  const handleClick = async () => {
-    const composer = await (
-      await fetch(
-        `https://api.openopus.org/work/list/composer/${composer.id}/genre/all.json`
-      )
-    ).json();
-    setWorks(composer.works);
-    setToggleWorks(!toggleWorks);
-  };
-
-  const handleChange = (e) => {
-    const query = e.target.value;
-    setQuery(query);
-  };
-
-  const handleSubmit = async (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
-    const composer = await (
-      await fetch(
-        `https://api.openopus.org/work/list/composer/${composer.id}/genre/all.json`
-      )
-    ).json();
     if (query.length > 0) {
-      const tempArr = composer.works.filter((work) => {
-        return work.title.toLowerCase().includes(query);
+      const tempArr = composerWorks.filter((work) => {
+        return work.title.toLowerCase().includes(query.toLowerCase());
       });
-      setSearched(tempArr);
-      if (!toggleSearched) {
-        setToggleSearched(!toggleSearched);
-      }
+      setWorkSelection(tempArr);
       setQuery("");
-      setReset(false);
     }
   };
 
   const resetHandler = () => {
-    setReset(!reset);
-    setSearched([]);
-    if (toggleSearched) {
-      setToggleSearched(!toggleSearched);
-    }
+    setQuery("");
+    setWorkSelection(composerWorks);
   };
 
   return (
@@ -79,10 +48,10 @@ const ComposerProfile = () => {
           <p>{composer.birth.substring(0, 4)} - {composer.death === null ? "present" : composer.death.substring(0, 4)}</p>
           <p>Time Period: {composer.epoch}</p>
 
-          <form onSubmit={(e) => handleSubmit(e)}>
+          <form onSubmit={submitHandler}>
             <div className="workSearch">
-              <label htmlFor="searchWorks">Search Works: </label>
-              <input onChange={(e) => handleChange(e)} type="text" name="searchWorks" id="searchWorks" value={query}/>
+              <label htmlFor="searchWorks">Search Works:</label>
+              <input onChange={(e) => setQuery(e.target.value)} type="text" name="searchWorks" id="searchWorks" value={query} placeholder="search work"/>
               <div className="searchButtons">
                 <input type="submit" value="Search" />
                 <input onClick={resetHandler} type="reset" value="Clear" />
@@ -90,14 +59,7 @@ const ComposerProfile = () => {
             </div>
           </form>
 
-          <ComposerWorks composer={composer} composerWorks={composerWorks}/>
-
-          {toggleWorks ? (
-            <ComposerWorks composerWorks={composerWorks}/>
-          ) : null}
-          {toggleSearched ? (
-            <SearchWorks works={searched} composer={composer} />
-          ) : null}
+          <ComposerWorks composer={composer} composerWorks={workSelection}/>
         </div>
     </div>
   );
