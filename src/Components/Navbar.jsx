@@ -1,31 +1,23 @@
 import React, { useContext, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import { DataContext } from "../context/Context";
 
 const Navbar = () => {
-  const { data, user } = useContext(DataContext);
-  const [query, setQuery] = useState("");
-  const [searchList, setSearchList] = useState([]);
-  const [reset, setReset] = useState(true);
-
+  const { data, user, composerFilter, setComposerFilter } = useContext(DataContext);
+  const history = useHistory();
+  
   const handleChange = (e) => {
     const query = e.target.value;
-    setQuery(query);
+    setComposerFilter(query);
+  };
+
+  const resetHandler = () => {
+    setComposerFilter("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const tempArr = data.filter((composer) => {
-      return composer.complete_name.toLowerCase().includes(query);
-    });
-    setSearchList(tempArr);
-    setQuery("");
-    setReset(false);
-  };
-
-  const resetHandler = () => {
-    setReset(!reset);
-    setSearchList(data);
+    history.push("/composers");
   }
 
   return (
@@ -34,9 +26,9 @@ const Navbar = () => {
         <h1>aChord</h1>
       </Link>
 
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <div>
-          <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={query} placeholder="search for composer" />
+          <input onChange={(e) => handleChange(e)} type="text" name="composerName" id="composerName" value={composerFilter} placeholder="Search for a Composer" />
         </div>
         <div className="buttons">
           <button type="submit">Search</button>

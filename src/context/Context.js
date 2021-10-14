@@ -7,7 +7,8 @@ export const ContextProvider = (props) => {
   const [data, setData] = useState([]);
   const [spotifyID, setSpotifyID] = useState('64XAQNts7RaywHdO3FYabw');
   const [user, setUser] = useState();
-  const [authIsDone, setAuthIsDone] = useState(false)  
+  const [authIsDone, setAuthIsDone] = useState(false);
+  const [composerFilter, setComposerFilter] = useState("");
 
   useEffect(() => {
     const authMe = async () => {
@@ -32,7 +33,7 @@ export const ContextProvider = (props) => {
 
   return (
     <DataContext.Provider
-      value={{ data, setData, spotifyID, setSpotifyID, user, setUser, authIsDone, setAuthIsDone }}
+      value={{ data, setData, spotifyID, setSpotifyID, user, setUser, authIsDone, setAuthIsDone, composerFilter, setComposerFilter }}
     >
       {props.children}
     </DataContext.Provider>

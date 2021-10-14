@@ -5,7 +5,7 @@ import { DataContext } from "../context/Context";
 import WelcomeBanner from "./WelcomeBanner";
 
 const ComposerList = () => {
-  const { data, setData, user } = useContext(DataContext);
+  const { data, setData, user, composerFilter } = useContext(DataContext);
 
   useEffect(() => {
     return fetch('http://localhost:5000/composers')
@@ -15,7 +15,7 @@ const ComposerList = () => {
     })
   }, [user]);
 
-  const composerGallery = data.map((item, index)=>{
+  const composerGallery = data.sort((a, b) => a.name.localeCompare(b.name)).filter(composer => composer.complete_name.toLowerCase().includes(composerFilter.toLowerCase()) || composerFilter === "").map((item, index)=>{
     return(
       <Link to={{pathname:`/composers/${item.complete_name}`, state: {composer: item}}} key={index} className="composerListItem">
         <div className="imageContainer"><img src={item.portrait} alt={`${item.complete_name} portrait`}/></div>
