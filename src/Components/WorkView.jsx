@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useLocation, useHistory } from "react-router-dom";
-import { DataContext } from "../App";
+import { DataContext } from "../context/Context";
 
 const WorkView = () => {
   const { setSpotifyID } = useContext(DataContext);

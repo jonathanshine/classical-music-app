@@ -27,3 +27,19 @@ export const SignInUser = async (data) => {
         return error;
     };
 };
+
+export const authenticateUser = async () => {
+  console.log("trying to auth cookie");
+  try {
+    const res = await (
+      await fetch(`${serverURL}/users/auth`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      })
+    ).json();
+    return res;
+  } catch (error) {
+    return error;
+  }
+};

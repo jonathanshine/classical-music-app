@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { DataContext } from "../App";
+import { DataContext } from "../context/Context";
 
 const Navbar = () => {
-  const { data } = useContext(DataContext);
+  const { data, user } = useContext(DataContext);
   const [query, setQuery] = useState("");
   const [searchList, setSearchList] = useState([]);
   const [reset, setReset] = useState(true);
@@ -51,12 +51,19 @@ const Navbar = () => {
         <NavLink to="/about" activeClassName="active">
           About
         </NavLink>
-        <NavLink exact to="/signup" activeClassName="active">
+        {user
+        ? <NavLink exact to={`/userprofile`} activeClassName="active">
+        Profile
+        </NavLink>
+        :<>
+          <NavLink exact to="/signup" activeClassName="active">
           Signup
-        </NavLink>
-        <NavLink exact to="/login" activeClassName="active">
-          Login
-        </NavLink>
+          </NavLink>
+          <NavLink exact to="/login" activeClassName="active">
+            Login
+          </NavLink>
+        </>
+        }
       </div>
     </div>
   );

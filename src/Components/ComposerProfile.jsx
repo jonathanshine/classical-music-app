@@ -15,11 +15,12 @@ const ComposerProfile = () => {
     async function fetchData() {
       const composerInfo = await (await fetch(`http://localhost:5000/composers/${composer._id}`)
       ).json();
+      console.log(composerInfo.works);
       setComposerWorks(composerInfo.works);
       setWorkSelection(composerInfo.works);
     }
     fetchData();
-  }, []);
+  });
 
   const submitHandler = (e) => {
     e.preventDefault();

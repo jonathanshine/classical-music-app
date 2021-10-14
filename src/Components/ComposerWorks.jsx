@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const ComposerWorks = ({ composer, composerWorks }) => {
-
-  // useEffect(()=>{
-
-  // },[composerWorks])
 
   const workList = composerWorks.map((work, index)=>{
     return(

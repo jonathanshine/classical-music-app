@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router';
-import { DataContext } from '../App';
+import { DataContext } from "../context/Context";
 import { SignUpUser } from '../helpers/apiCalls';
 
 export default function Signup() {
-  const { data, user, setUser } = useContext( DataContext );
+  const { data, setUser } = useContext( DataContext );
   const { register, handleSubmit, formState: { errors } } = useForm();
   const history = useHistory();
   

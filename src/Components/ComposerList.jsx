@@ -1,11 +1,19 @@
-import React from "react";
-import { useContext, useState } from "react";
+import React, { useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { DataContext } from "../App";
+import { DataContext } from "../context/Context";
 import WelcomeBanner from "./WelcomeBanner";
 
 const ComposerList = () => {
-  const { data } = useContext(DataContext);
+  const { data, setData, user } = useContext(DataContext);
+
+  useEffect(() => {
+    return fetch('http://localhost:5000/composers')
+    .then(data => data.json())
+    .then(items => {  
+      setData(items);
+    })
+  }, [user]);
 
   const composerGallery = data.map((item, index)=>{
     return(
