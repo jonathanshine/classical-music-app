@@ -21,7 +21,7 @@ export const ContextProvider = (props) => {
           return;
         }
 
-        setUser();
+        setUser(null);
         setAuthIsDone(true);
       } catch (error) {
         console.log("Authentication failed -", error);;
