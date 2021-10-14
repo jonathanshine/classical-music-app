@@ -45,25 +45,21 @@ const Navbar = () => {
       </form>
 
       <div className="nav-menu">
-        <NavLink exact to="/composers" activeClassName="active">
+        <NavLink to="/composers" className="home-link" activeClassName="active">
           Home
         </NavLink>
-        <NavLink to="/about" activeClassName="active">
+        <NavLink to="/about" className="about-link" activeClassName="active">
           About
         </NavLink>
-        {user
-        ? <NavLink exact to={`/userprofile`} activeClassName="active">
-        Profile
+        <NavLink to={user != null ? "/userprofile" : "/login"} className="user-link" activeClassName="user-active">
+          🏠
         </NavLink>
-        :<>
-          <NavLink exact to="/signup" activeClassName="active">
-          Signup
-          </NavLink>
-          <NavLink exact to="/login" activeClassName="active">
-            Login
-          </NavLink>
-        </>
-        }
+        {/* <NavLink exact to="/signup" activeClassName="active">
+        Signup
+        </NavLink>
+        <NavLink exact to="/login" activeClassName="active">
+          Login
+        </NavLink> */}
       </div>
     </div>
   );

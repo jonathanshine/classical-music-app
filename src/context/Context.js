@@ -6,7 +6,7 @@ export const DataContext = createContext();
 export const ContextProvider = (props) => {
   const [data, setData] = useState([]);
   const [spotifyID, setSpotifyID] = useState('64XAQNts7RaywHdO3FYabw');
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
   const [authIsDone, setAuthIsDone] = useState(false)  
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const ContextProvider = (props) => {
           return;
         }
 
-        setUser();
+        setUser(null);
         setAuthIsDone(true);
       } catch (error) {
         console.log("Authentication failed -", error);;

@@ -8,6 +8,10 @@ const ComposerProfile = () => {
 
   const [composerWorks, setComposerWorks] = useState([]);
   const [workSelection, setWorkSelection] = useState([]);
+  const [whichSelection, setWhichSelection] = useState("");
+
+  const [recommendedWorks, setRecommendedWorks] = useState([]);
+  const [popularWorks, setPopularWorks] = useState([]);
 
   const [query, setQuery] = useState("");
 
@@ -16,11 +20,15 @@ const ComposerProfile = () => {
       const composerInfo = await (await fetch(`http://localhost:5000/composers/${composer._id}`)
       ).json();
       console.log(composerInfo.works);
+      const recommended = composerInfo.works.filter(work=>work.recommended=="1");
+      const popular = composerInfo.works.filter(work=>work.popular=="1");
+      setRecommendedWorks(recommended)
+      setPopularWorks(popular)
       setComposerWorks(composerInfo.works);
       setWorkSelection(composerInfo.works);
     }
     fetchData();
-  });
+  },[]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -37,6 +45,13 @@ const ComposerProfile = () => {
     setQuery("");
     setWorkSelection(composerWorks);
   };
+
+  const workSelectionHandler = (e) => {
+    if(e.target.id === "recommendedWorks") setWhichSelection("recommended");
+    if(e.target.id === "popularWorks") setWhichSelection("popular");
+    if(e.target.id === "allWorks") setWhichSelection("");
+    if(query.length >= 1) setWhichSelection("search");
+  }
 
   return (
     <div className="composerProfileContainer">
@@ -60,7 +75,15 @@ const ComposerProfile = () => {
             </div>
           </form>
 
-          <ComposerWorks composer={composer} composerWorks={workSelection}/>
+          <div className="composerWorkList">
+            <h3>Works</h3>
+            <ul className="works-nav">
+              <li id="allWorks" onClick={workSelectionHandler}>All({`${composerWorks.length}`})</li>
+              <li id="recommendedWorks" onClick={workSelectionHandler}>Recommended({`${recommendedWorks.length}`})</li>
+              <li id="popularWorks" onClick={workSelectionHandler}>Popular({`${popularWorks.length}`})</li>
+            </ul>
+            <ComposerWorks composer={composer} composerWorks={whichSelection === "search" ? workSelection : whichSelection === "recommended" ? recommendedWorks : whichSelection === "popular" ? popularWorks : composerWorks}/>
+          </div>
         </div>
     </div>
   );

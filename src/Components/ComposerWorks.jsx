@@ -15,7 +15,6 @@ const ComposerWorks = ({ composer, composerWorks }) => {
 
   return (
     <div>
-      <h3>Works</h3>
       <ul>
         {workList}
       </ul>

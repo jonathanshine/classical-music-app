@@ -31,8 +31,10 @@
   }
 
   .nav-menu{
-    a {
-      margin-left:10px;
+    display:flex;
+    align-items: center;
+    .home-link, .about-link {
+      margin-left:20px;
       text-decoration: none;
       color: white;
       background-color: black;
@@ -41,12 +43,19 @@
       border-radius: 5px;
       opacity: 0.5;
     }
-    a.active {
+    .active {
       font-weight: bold;
       color: black;
       background-color: #fff;
       border: solid 1px black;
       opacity: 1;
+    }
+    .user-link{
+      margin-left:20px;
+      font-size:40px;
+    }
+    .user-active {
+      text-shadow: 0 0 10px white;
     }
   }
 }
